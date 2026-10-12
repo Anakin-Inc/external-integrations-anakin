@@ -248,8 +248,30 @@ is needed beyond this snippet.
 
 ## OpenCode
 
-User: `~/.config/opencode/opencode.json`. Project: `opencode.json` (nearest
-git root wins, merges with user config).
+Recommended: the [Anakin plugin for OpenCode](https://github.com/Anakin-Inc/opencode-anakin)
+(`@anakin-io/opencode`). It adds the hosted server below plus the five Anakin
+skills:
+
+```bash
+opencode plugin @anakin-io/opencode       # OpenCode 1
+opencode plugin add @anakin-io/opencode   # OpenCode 2
+opencode mcp auth anakin                  # sign in to Anakin once (OAuth)
+```
+
+Without the plugin, point OpenCode at the hosted server. OpenCode handles its
+OAuth sign-in itself (dynamic client registration), so no key is needed:
+
+```json
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "anakin": { "type": "remote", "url": "https://mcp.anakin.io/mcp" }
+  }
+}
+```
+
+Or run the local server with an API key. User: `~/.config/opencode/opencode.json`.
+Project: `opencode.json` (nearest git root wins, merges with user config).
 
 ```json
 {
